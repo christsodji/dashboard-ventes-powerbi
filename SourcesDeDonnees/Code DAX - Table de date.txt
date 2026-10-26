@@ -1,0 +1,29 @@
+DimDates = 
+
+VAR DateDebut = DATE(2013, 01, 01)
+
+VAR DateFin = DATE(2015, 12, 31)
+
+RETURN 
+
+ADDCOLUMNS(CALENDAR(DateDebut, DateFin),
+
+"Année", FORMAT([Date], "yyyy"),
+
+"NoMois", MONTH([Date]),
+
+"Mois", FORMAT([Date],"MMMM"),
+
+"JourMois", FORMAT([Date], "dd") & " - " & FORMAT([Date],"MMM"),
+
+"Trimestre", FORMAT([Date],"Tri\m Q"),
+
+"AnneeMois", FORMAT([Date],"YYYY-MM"),
+
+"NoJourSemaine", WEEKDAY([Date],2), //1-Dim..Sam; 2-Lun..Sam
+
+"JourSemaine", FORMAT([Date],"ddd"),
+
+"NoSemaine", WEEKNUM([Date], 2),
+
+"Semaine", "S" & WEEKNUM([Date], 2) )
